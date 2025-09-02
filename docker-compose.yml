@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: trellis_postgres
+    environment:
+      POSTGRES_USER: trellis
+      POSTGRES_PASSWORD: trellis
+      POSTGRES_DB: trellis
+    ports:
+      - "5433:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  temporal:
+    image: temporalio/auto-setup:latest
+    container_name: trellis_temporal
+    environment:
+      - DB=postgres12
+      - DB_PORT=5432
+      - POSTGRES_USER=trellis
+      - POSTGRES_PWD=trellis
+      - POSTGRES_SEEDS=postgres
+    ports:
+      - "7233:7233"   # Temporal gRPC
+      - "8233:8233"   # Web UI
+    depends_on:
+      postgres:
+        condition: service_started
+
+  adminer:
+    image: adminer:latest
+    container_name: trellis_adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+volumes:
+  db-data:
