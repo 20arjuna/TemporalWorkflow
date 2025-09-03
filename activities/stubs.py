@@ -9,11 +9,15 @@ import asyncio, random
 async def flaky_call() -> None:
     """Either raise an error or sleep long enough to trigger an activity timeout."""
     rand_num = random.random()
-    if rand_num < 0.33:
+    if rand_num < 0.33:  # 15% chance of immediate failure
+        print("Raising RuntimeError for testing")
         raise RuntimeError("Forced failure for testing")
 
-    if rand_num < 0.67:
-            await asyncio.sleep(300)  # Expect the activity layer to time out before this completes
+    if rand_num < 0.67:  # 10% chance of timeout (25% - 15% = 10%)
+        print("Sleeping for 5 seconds to trigger timeout")
+        await asyncio.sleep(5)  # Sleep longer than 10s activity timeout to trigger timeout
+
+    # 75% chance of success (no sleep, no error)
 
 async def order_received(order_id: str) -> Dict[str, Any]:
     await flaky_call()
