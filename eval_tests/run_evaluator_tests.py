@@ -32,10 +32,11 @@ def check_system_prerequisites() -> List[str]:
     
     # Check if Docker Compose is running
     try:
-        result = subprocess.run(["docker-compose", "ps"], capture_output=True, text=True, timeout=10)
+        result = subprocess.run(["docker", "compose", "ps"], capture_output=True, text=True, timeout=10)
         if "postgres" not in result.stdout or "temporal" not in result.stdout:
             issues.append("❌ Docker Compose services not running. Start with: docker-compose up -d")
-    except Exception:
+    except Exception as e:
+        print(e)
         issues.append("❌ Docker Compose not available or not running")
     
     return issues
@@ -100,9 +101,9 @@ def main():
     
     # Test suites to run
     test_suites = [
-        ("eval_tests/test_temporal_concepts.py", "Temporal Concepts & Logic"),
-        ("eval_tests/test_cli_functionality.py", "CLI Business Logic"),
-        ("eval_tests/test_api_endpoints.py", "API Integration & Workflows"),
+        ("test_temporal_concepts.py", "Temporal Concepts & Logic"),
+        ("test_cli_functionality.py", "CLI Business Logic"),
+        ("test_api_endpoints.py", "API Integration & Workflows"),
     ]
     
     results = []

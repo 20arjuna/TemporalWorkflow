@@ -44,8 +44,9 @@ class TestTemporalWorkflowAPI:
         
         assert response.status_code == 200
         data = response.json()
-        assert data["message"] == "Order workflow started"
+        assert data["status"] == "started"
         assert data["order_id"] == order_id
+        assert "workflow_id" in data
         print(f"✅ Order {order_id} started successfully")
     
     def test_order_status_endpoint(self):
@@ -87,7 +88,8 @@ class TestTemporalWorkflowAPI:
         assert cancel_response.status_code == 200
         
         data = cancel_response.json()
-        assert data["message"] == "Cancel signal sent"
+        assert data["status"] == "cancel_signal_sent"
+        assert data["order_id"] == order_id
         print(f"✅ Order {order_id} cancelled successfully")
     
     def test_approve_order_endpoint(self):
@@ -110,7 +112,8 @@ class TestTemporalWorkflowAPI:
         assert approve_response.status_code == 200
         
         data = approve_response.json()
-        assert data["message"] == "Approval signal sent"
+        assert data["status"] == "approve_signal_sent"
+        assert data["order_id"] == order_id
         print(f"✅ Order {order_id} approved successfully")
     
     def test_complete_order_flow_via_api(self):
