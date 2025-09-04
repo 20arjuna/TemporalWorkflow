@@ -38,7 +38,7 @@ pip install requests
 
 # 2. Start the system
 docker-compose up -d
-python run.py &
+python run_api.py &
 python workers/order_worker.py &
 python workers/shipping_worker.py &
 

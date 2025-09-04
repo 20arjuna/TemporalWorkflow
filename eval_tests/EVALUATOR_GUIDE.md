@@ -5,7 +5,7 @@
 ```bash
 # 1. Start system (30 seconds)
 docker-compose up -d
-python run.py &
+python run_api.py &
 python workers/order_worker.py &
 python workers/shipping_worker.py &
 

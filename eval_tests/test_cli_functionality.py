@@ -263,10 +263,7 @@ if __name__ == "__main__":
     print("🚀 TEMPORAL WORKFLOW EVALUATOR TESTS")
     print("=" * 60)
     print("REQUIREMENTS TO RUN:")
-    print("1. pip install requests")
-    print("2. Start API: python run.py")
-    print("3. Start workers: python workers/order_worker.py & python workers/shipping_worker.py") 
-    print("4. Docker Compose running: docker-compose up -d")
+    print("Docker Compose running: docker-compose up -d")
     print("=" * 60)
     print()
     
@@ -283,7 +280,7 @@ if __name__ == "__main__":
         exit(1)
     except Exception as e:
         print(f"❌ API server not reachable: {e}")
-        print("Start with: python run.py")
+        print("Start with: python run_api.py")
         exit(1)
     
     print("🧪 Running CLI and workflow logic tests...\n")

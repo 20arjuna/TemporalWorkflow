@@ -28,7 +28,7 @@ def check_system_prerequisites() -> List[str]:
         if response.status_code != 200:
             issues.append(f"❌ API server unhealthy (status {response.status_code})")
     except Exception:
-        issues.append("❌ API server not running. Start with: python run.py")
+        issues.append("❌ API server not running. Start with: python run_api.py")
     
     # Check if Docker Compose is running
     try:
@@ -89,12 +89,8 @@ def main():
         print("\n❌ SYSTEM NOT READY:")
         for issue in issues:
             print(f"   {issue}")
-        print("\n🔧 FIX THESE ISSUES FIRST:")
-        print("   1. pip install requests")
-        print("   2. docker-compose up -d")
-        print("   3. python run.py &")
-        print("   4. python workers/order_worker.py &")
-        print("   5. python workers/shipping_worker.py &")
+        print("\n🔧 RUN THIS:")
+        print("  docker-compose up -d")
         return 1
     
     print("✅ System prerequisites met")

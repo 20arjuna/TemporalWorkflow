@@ -176,10 +176,7 @@ if __name__ == "__main__":
     print("🚀 TEMPORAL WORKFLOW API TESTS")
     print("=" * 50)
     print("Prerequisites:")
-    print("1. pip install requests")
-    print("2. Start API server: python run.py")
-    print("3. Start workers: python workers/order_worker.py & python workers/shipping_worker.py")
-    print("4. Ensure Docker Compose is running")
+    print("Ensure Docker Compose is running")
     print("=" * 50)
     
     # Run a quick connectivity test
@@ -191,7 +188,7 @@ if __name__ == "__main__":
             print(f"❌ API server returned status {response.status_code}")
     except Exception as e:
         print(f"❌ Cannot reach API server: {e}")
-        print("Please start the API server with: python run.py")
+        print("Please start the API server with: python run_api.py")
         exit(1)
     
     print("\n🧪 Running tests...")

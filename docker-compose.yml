@@ -82,7 +82,7 @@ services:
     build:
       context: .
       dockerfile: dockerfile
-    command: python3 run.py
+    command: python3 run_api.py
     ports:
       - "8000:8000"
     environment:
