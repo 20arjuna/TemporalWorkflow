@@ -52,7 +52,7 @@ source .venv/bin/activate
 
 # 3. Start all services
 docker compose down
-docker compose -f docker-compose.yml up -d
+docker compose -f docker-compose.yml up -d --build
 ```
 
 Now you're ready to test!
