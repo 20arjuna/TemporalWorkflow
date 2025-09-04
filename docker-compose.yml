@@ -1,7 +1,12 @@
+# Complete Docker Compose with Workers
+# Everything from original docker-compose.yml PLUS containerized workers
+# User runs: docker-compose -f docker-compose-2.yml up -d
+
 services:
+  # Database (from original)
   postgres:
     image: postgres:15
-    container_name: trellis_postgres
+    container_name: trellis_postgres_v2
     environment:
       POSTGRES_USER: trellis
       POSTGRES_PASSWORD: trellis
@@ -11,9 +16,10 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
 
+  # Temporal (from original)
   temporal:
     image: temporalio/auto-setup:latest
-    container_name: trellis_temporal
+    container_name: trellis_temporal_v2
     environment:
       - DB=postgres12
       - DB_PORT=5432
@@ -27,13 +33,62 @@ services:
       postgres:
         condition: service_started
 
+  # Adminer (from original)
   adminer:
     image: adminer:latest
-    container_name: trellis_adminer
+    container_name: trellis_adminer_v2
     ports:
       - "8080:8080"
     depends_on:
       - postgres
+
+  # NEW: Order worker
+  order-worker:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: trellis_order_worker_2
+    command: python3 workers/order_worker.py
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - TEMPORAL_HOST=temporal:7233
+    depends_on:
+      - temporal
+    restart: unless-stopped
+
+  # NEW: Shipping worker  
+  shipping-worker:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: trellis_shipping_worker_2
+    command: python3 workers/shipping_worker.py
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - TEMPORAL_HOST=temporal:7233
+    depends_on:
+      - temporal
+    restart: unless-stopped
+
+  api-server:
+    build:
+      context: .
+      dockerfile: dockerfile
+    command: python3 run.py
+    ports:
+      - "8000:8000"
+    environment:
+      - TEMPORAL_HOST=temporal:7233
+    depends_on:
+      - temporal
 
 volumes:
   db-data:

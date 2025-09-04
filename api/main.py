@@ -20,7 +20,9 @@ temporal_client = None
 @app.on_event("startup")
 async def startup():
     global temporal_client
-    temporal_client = await Client.connect("localhost:7233")
+    # temporal_client = await Client.connect("localhost:7233")
+    temporal_host = os.getenv("TEMPORAL_HOST", "localhost:7233")
+    temporal_client = await Client.connect(temporal_host)
 
 @app.get("/health")
 async def health_check():

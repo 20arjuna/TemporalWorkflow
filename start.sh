@@ -1,7 +1,22 @@
 #!/bin/bash
 
-echo "🎉 Welcome to Arjun's Temporal Workflow Demo!"
-echo ""
+echo "Hey there! Let's get you set up..."
+if ! docker info >/dev/null 2>&1; then
+    echo ""
+    echo "❌ Docker Desktop is not running!"
+    echo ""
+    echo "PLease start Docker Desktop and run this script again."
+    echo ""
+    echo "If you don't have Docker Desktop installed, you can download it here:"
+    echo "   macOS: https://docs.docker.com/desktop/install/mac-install/"
+    echo "   Linux: https://docs.docker.com/desktop/install/linux-install/"  
+    echo "   Windows: https://docs.docker.com/desktop/install/windows-install/"
+    echo ""
+    echo "👋 Come back and run ./start4.sh when Docker Desktop is running!"
+    exit 1
+fi
+
+
 
 # Function to show loading animation
 show_loading() {
@@ -33,7 +48,7 @@ setup_environment() {
     
     # 3. Start docker services silently
     docker compose down >/dev/null 2>&1
-    docker compose -f docker-compose-2.yml up -d >/dev/null 2>&1
+    docker compose -f docker-compose.yml up -d >/dev/null 2>&1
     
     # 4. Wait for Temporal to be ready
     while ! nc -z localhost 7233 2>/dev/null; do

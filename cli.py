@@ -32,7 +32,7 @@ class Colors:
 def print_banner():
     """Print the welcome banner."""
     print(f"\n{Colors.CYAN}{'='*60}{Colors.END}")
-    print(f"{Colors.BOLD}{Colors.HEADER}🚀 Welcome to Arjun's Temporal Takehome 🚀{Colors.END}")
+    print(f"{Colors.BOLD}{Colors.HEADER}🚀 Welcome to Arjun's Temporal Demo 🚀{Colors.END}")
     print(f"{Colors.CYAN}{'='*60}{Colors.END}")
     print(f"{Colors.BLUE}Interactive Order Management System{Colors.END}")
     print(f"{Colors.YELLOW}Powered by Temporal Workflows ⚡{Colors.END}\n")
@@ -979,8 +979,8 @@ async def main():
             choice = get_user_input("Choose an option (1-6, q): ", Colors.BOLD)
             
             if choice == 'q' or choice.lower() == 'quit':
-                print(f"\n{Colors.CYAN}👋 Thanks for using Arjun's Temporal Takehome!{Colors.END}")
-                print(f"{Colors.BLUE}May your workflows be ever resilient! ⚡{Colors.END}\n")
+                print(f"\n{Colors.CYAN}👋 Thanks for using Arjun's Temporal Demo!{Colors.END}")
+                #print(f"{Colors.BLUE}May your workflows be ever resilient! ⚡{Colors.END}\n")
                 break
             
             elif choice == '1':
