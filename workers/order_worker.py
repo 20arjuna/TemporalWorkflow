@@ -12,7 +12,9 @@ from workflows.order_workflow import OrderWorkflow
 from activities.order_activities import receive_order, validate_order, charge_payment
 
 async def main():
-    client = await Client.connect("localhost:7233")
+    # client = await Client.connect("localhost:7233")
+    temporal_host = os.getenv("TEMPORAL_HOST", "localhost:7233")
+    client = await Client.connect(temporal_host)
 
     worker = Worker(
         client,

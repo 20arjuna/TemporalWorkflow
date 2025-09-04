@@ -12,7 +12,9 @@ from workflows.shipping_workflow import ShippingWorkflow
 from activities.shipping_activities import prepare_package, dispatch_carrier
 
 async def main():
-    client = await Client.connect("localhost:7233")
+    # client = await Client.connect("localhost:7233")
+    temporal_host = os.getenv("TEMPORAL_HOST", "localhost:7233")
+    client = await Client.connect(temporal_host)
 
     worker = Worker(
         client,

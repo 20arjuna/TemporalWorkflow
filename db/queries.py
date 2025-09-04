@@ -146,7 +146,7 @@ class PaymentQueries:
         try:
             await execute_query("""
                 UPDATE payments 
-                SET attempt_number = $2, retry_count = $3, last_error = $4, updated_at = NOW()
+                SET attempt_number = $2, retry_count = $3, last_error = $4
                 WHERE payment_id = $1
             """, payment_id, attempt_number, retry_count, last_error)
             return True
