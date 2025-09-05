@@ -45,38 +45,38 @@ The program should be up and running in your terminal!
 
 The CLI provides an intuitive interface for order management:
 
-![priorauth](images/main_menu.png?raw=true "Prior Authorization Process")
+<img src="images/main_menu.png?raw=true" alt="Main Menu" width="600">
 
 **🛒 Create a New Order**
 - Enter order ID and shipping address
 - Workflow starts automatically
 
-![startorder](images/startorder.png?raw=true "Create New Order")
+<img src="images/startorder.png?raw=true" alt="Create New Order" width="600">
 
 
 **✅ Approve Orders**
 - Select from pending orders
 - Send approval signal to continue processing
 
-![approveorder](images/approveorder.png?raw=true "Approve Orders")
+<img src="images/approveorder.png?raw=true" alt="Approve Orders" width="600">
 
 **📊 View Order Status**
 - Real-time status dashboard
 - Tracks status and retry information
 
-![vieworder](images/vieworder.png?raw=true "View Order Status")
+<img src="images/vieworder.png?raw=true" alt="View Order Status" width="600">
 
 **🔍 View Audit Logs**
 - Complete event timeline
 - Failure analysis and retry tracking
 
-![auditlogs](images/auditlogs.png?raw=true "View Audit Logs")
+<img src="images/auditlogs.png?raw=true" alt="View Audit Logs" width="600">
 
 **📍 Update Order Address**
 - Change shipping address for pending orders
 - Signal-based updates during workflow execution
 
-![updateaddress](images/updateaddress.png?raw=true "Update Order Address")
+<img src="images/updateaddress.png?raw=true" alt="Update Order Address" width="600">
 
 
 
@@ -84,7 +84,7 @@ The CLI provides an intuitive interface for order management:
 - Cancel active orders with confirmation
 - Graceful workflow termination
 
-![cancelorder](images/cancelorder.png?raw=true "Cancel Orders")
+<img src="images/cancelorder.png?raw=true" alt="Cancel Orders" width="600">
 
 ## 🧪 Testing
 
