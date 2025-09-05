@@ -5,14 +5,14 @@ This is an order tracking simulation that runs in your terminal.
 
 Start an order and track each step from creation to delivery. Think of it like a domino's pizza tracker that runs automatically -- minus the awesome UI.
 
-<img src="images/dominos.jpg?raw=true" alt="Dominos Pizza Tracker" width="500">
+<img src="images/dominos.png?raw=true" alt="Dominos Pizza Tracker" width="700">
 
 ## Who cares?
 Suppose you work at an infusion center and need to prescribe specialty medication to a patient. 
 
 This is what that process looks like:
 
-<img src="images/PriorAuthProcess.png?raw=true" alt="Prior Authorization Process" width="500">
+<img src="images/PriorAuthProcess.png?raw=true" alt="Prior Authorization Process" width="700">
 
 Writing a computer program to track this process is **much harder** than building a simple pizza ordering system. Why?
 
