@@ -1,6 +1,6 @@
 # 🚀 Arjun's Temporal Workflow Demo
 
-## What is this?
+## ❓ What is this?
 This is an order tracking simulation that runs in your terminal. 
 
 Start an order and track each step from creation to delivery. Think of it like a domino's pizza tracker that runs automatically -- minus the awesome UI.
@@ -9,7 +9,7 @@ Start an order and track each step from creation to delivery. Think of it like a
 <img src="images/dominos.png?raw=true" alt="Dominos Pizza Tracker" width="700">
 </p>
 
-## Who cares?
+## 👥 Who cares?
 Suppose you work at an infusion center and need to prescribe specialty medication to a patient. 
 
 This is what that process looks like:
@@ -28,7 +28,7 @@ Writing a computer program to track this process is **much harder** than buildin
 
 **That's exactly why this matters.** Its a computer program that simulates an order moving from creation to delivery **while gracefully dealing with all these real-world complications.**
 
-## How to use it
+## 🎯 How to use it
 
 ### Pre-requisites
 - Docker Desktop - Must be installed and running
@@ -43,6 +43,7 @@ cd TemporalWorkflow
 
 The program should be up and running in your terminal!
 
+> **💡 Note**: The setup process has been fully automated for the best user experience. If you prefer manual setup or need to troubleshoot, see our [**Manual Setup Guide**](ManualSetup.md).
 
 
 ### Usage

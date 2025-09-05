@@ -1,25 +1,18 @@
 # Temporal Workflow - Evaluator Test Suite
 
-This test suite is designed for **evaluators** to quickly validate the Temporal workflow system without dealing with Python architecture issues or complex setup.
+This test suite is designed for evaluators to quickly validate the Temporal workflow system.
 
-## 🎯 **What These Tests Cover**
+## 📋 Test Suites Overview
 
-### 1. **API Endpoint Tests** (`test_api_endpoints.py`)
-- ✅ Health check endpoint
-- ✅ Start order workflow
-- ✅ Check order status  
-- ✅ Cancel order (signal)
-- ✅ Approve order (signal)
-- ✅ Complete order flow end-to-end
+This suite includes three comprehensive test categories:
 
-### 2. **CLI Logic Tests** (`test_cli_functionality.py`) 
-- ✅ Address validation logic
-- ✅ Order ID generation
-- ✅ CLI menu structure
-- ✅ Color formatting functions
-- ✅ Print utility functions
+1. **Temporal Concept Tests** - Core workflow functionality
+2. **CLI Logic Tests** - Command-line interface validation  
+3. **API Endpoint Tests** - RESTful API verification
 
-### 3. **Temporal Concepts Tests** (`test_temporal_concepts.py`)
+## 🎯 What These Tests Cover
+### 1. Temporal Concepts Tests (`test_temporal_concepts.py`)
+
 - ✅ Workflow timeout configurations
 - ✅ Retry policy logic
 - ✅ Signal handling concepts
@@ -29,78 +22,75 @@ This test suite is designed for **evaluators** to quickly validate the Temporal 
 - ✅ Failure recovery scenarios
 - ✅ Manual review SLA logic
 
-## 🚀 **Quick Start for Evaluators**
+### 2. CLI Logic Tests (`test_cli_functionality.py`)
 
-### **Option A: API Tests (Recommended)**
+- ✅ Address validation logic
+- ✅ Order ID generation
+- ✅ CLI menu structure
+- ✅ Color formatting functions
+- ✅ Print utility functions
+
+### 3. API Endpoint Tests (`test_api_endpoints.py`)
+
+- ✅ Health check endpoint
+- ✅ Start order workflow
+- ✅ Check order status  
+- ✅ Cancel order (signal)
+- ✅ Approve order (signal)
+- ✅ Complete order flow end-to-end
+
+
+
+## 🚀 Setup for Evaluators
+
 ```bash
-# 1. Install requests
-pip install requests
+# 1. Create Virtual Environment
+python3 -m venv .venv
 
-# 2. Start the system
-docker-compose up -d
-python run_api.py &
-python workers/order_worker.py &
-python workers/shipping_worker.py &
+# 2. Activate Virtual Environment
+source .venv/bin/activate
 
-# 3. Run API tests
-python -m pytest eval_tests/test_api_endpoints.py -v -s
+# 3. Install Requirements
+pip3 install -r requirements.txt
+
+# 4. Start all services
+docker compose down
+docker compose -f docker-compose.yml up -d --build
 ```
 
-### **Option B: Logic-Only Tests (No Setup Required)**
-```bash
-# Test core concepts without any services
-python -m pytest eval_tests/test_temporal_concepts.py -v
-python -m pytest eval_tests/test_cli_functionality.py -v
-```
+Now you're ready to test!
 
-### **Option C: Run All Tests**
-```bash
-python eval_tests/run_evaluator_tests.py
-```
+1. Navigate to eval_tests:
+   ```bash
+   cd eval_tests
+   ```
 
-## 🎪 **What This Demonstrates**
+2. You can test all at once with:
+   ```bash
+   python3 run_evaluator_test.py
+   ```
 
-### **Temporal Workflow Engine Mastery:**
-- ✅ **Workflows**: Order processing with child workflows (shipping)
-- ✅ **Activities**: Retry policies, timeouts, idempotency
-- ✅ **Signals**: Approve, cancel, update address
-- ✅ **Child Workflows**: Shipping workflow triggered after payment
-- ✅ **Error Handling**: Graceful retries and failure recovery
-- ✅ **Timeouts**: Activity timeouts (20s) vs manual review SLA (3min)
+3. Or run individual tests with:
+   ```bash
+   python3 test_temporal_concepts.py
+   python3 test_cli_functionality.py
+   python3 test_api_endpoints.py
+   ```
 
-### **Production-Ready Features:**
-- ✅ **Database Integration**: PostgreSQL with proper migrations
-- ✅ **API Layer**: FastAPI with proper error handling
-- ✅ **CLI Tool**: Interactive, colorful, user-friendly
-- ✅ **Observability**: Event logging, retry tracking, audit trails
-- ✅ **Resilience**: Handles flaky services, network timeouts, worker crashes
-
-### **System Architecture:**
-- ✅ **Microservices**: Separate order and shipping workers
-- ✅ **Event Sourcing**: All state changes logged as events
-- ✅ **Idempotency**: Safe to retry any operation
-- ✅ **Monitoring**: Real-time order status tracking with retry counts
-
-## 🔧 **Troubleshooting**
+## 🔧 Troubleshooting
 
 **If tests fail:**
-1. Ensure Docker Compose is running: `docker-compose ps`
+
+1. Ensure Docker Compose is running: `docker compose ps`
 2. Check API server: `curl http://localhost:8000/health`
 3. Verify workers are running: `ps aux | grep python`
-4. Check Temporal server: `temporal server start-dev` (if not using Docker)
 
-**Architecture Issues:**
-- These tests avoid the `asyncpg` architecture mismatch by using HTTP API calls
-- Logic tests have no external dependencies
-- Database tests are in `new_tests/` folder with arm64 Python instructions
-
-## 📊 **Expected Results**
+## 📊 Expected Results
 
 **All tests should pass** when the system is properly configured, demonstrating:
+
 - Temporal workflow orchestration works correctly
 - API endpoints handle requests properly  
 - CLI logic functions as expected
 - Error handling and retries work as designed
 - The system can handle real-world failure scenarios
-
-This validates that the **Temporal workflow implementation meets production standards** for reliability, observability, and user experience.
