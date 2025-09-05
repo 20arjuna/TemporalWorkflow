@@ -55,6 +55,7 @@ Writing a computer program to track this process is **much harder** than buildin
 ```bash
 git clone https://github.com/20arjuna/TemporalWorkflow.git
 cd TemporalWorkflow
+chmod +x start.sh
 ./start.sh
 ```
 
