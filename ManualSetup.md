@@ -23,4 +23,4 @@ docker compose down
 docker compose -f docker-compose.yml up -d --build
 ```
 
-> Note**: `docker compose` automatically starts your database, Temporal server, and workers - everything you need is running in containers!
+> Note: `docker compose` automatically starts your database, Temporal server, and workers - everything you need is running in containers!

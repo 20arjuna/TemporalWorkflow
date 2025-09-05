@@ -1,5 +1,22 @@
 # 🚀 Arjun's Temporal Workflow Demo
 
+🎬 **[Watch Demo Video](https://screen.studio/share/GdqYKQLz)**
+
+## 📋 Table of Contents
+
+- [❓ What is this?](#-what-is-this)
+- [👥 Who cares?](#-who-cares)
+- [🎯 How to use it](#-how-to-use-it)
+  - [Pre-requisites](#pre-requisites)
+  - [Quick Start](#quick-start)
+  - [Usage](#usage)
+- [🏗️ Technical Architecture](#️-technical-architecture)
+  - [The Temporal Foundation](#the-temporal-foundation-activities-workflows-workers)
+  - [The Complete Order Flow](#the-complete-order-flow)
+- [Testing](#testing)
+
+---
+
 ## ❓ What is this?
 This is an order tracking simulation that runs in your terminal. 
 
